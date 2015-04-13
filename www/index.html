@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>FitnessChecker</title>
+        <script src="js/angular.min.js"></script>
+        <script src="js/fitness.js"></script>
+    </head>
+    <body ng-app="fitness" ng-controller="initController">
+        <div>
+            <h1>Fitness Checklist</h1><br>
+            <div ng-repeat="item in initController.data">
+                <input type="checkbox">{{item.desc}}
+            </div>
+        </div>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
+    </body>
+</html>
