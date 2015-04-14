@@ -7,14 +7,28 @@
         <script src="js/angular.min.js"></script>
         <script src="js/fitness.js"></script>
     </head>
-    <body ng-app="fitness" ng-controller="initController">
+    <body ng-app="fitness" ng-controller="itemController">
         <div>
             <h1>Fitness Checklist</h1><br>
-            <div ng-repeat="item in initController.data">
-                <input type="checkbox">{{item.desc}}
+            <div ng-repeat="item in data">
+                <h4><input type="checkbox" ng-click="select(item)">{{item.desc}}</h4>
             </div>
+            <div>
+                <input type="text" ng-model="itemDesc">
+                <button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">AddItem</button>
+            </div>
+            <div ng-controller="timerController">
+                <div ng-show="running"><span>{{hours}}:{{minutes}}:{{seconds}}</span></div>
+                <!--<div ng-show="running">{{clock.now}}</div>-->
+                <div>
+                    <button ng-click="timerToggle()" ng-model="running">{{status}}</button><br>
+                </div>
+                <!--<div>-->
+                    <!--<input type="text" ng-model="test">-->
+                    <!--<span>{{test}}</span>-->
+                <!--</div>-->
+            </div>
+
         </div>
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-        <!--<script type="text/javascript" src="js/index.js"></script>-->
     </body>
 </html>
