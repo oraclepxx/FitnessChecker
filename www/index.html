@@ -7,27 +7,38 @@
         <script src="js/angular.min.js"></script>
         <script src="js/fitness.js"></script>
     </head>
-    <body ng-app="fitness" ng-controller="itemController">
+    <body ng-app="fitness" ng-controller="dataController">
+        <h1>Fitness Checklist</h1><br>
+
         <div>
-            <h1>Fitness Checklist</h1><br>
-            <div ng-repeat="item in data">
-                <h4><input type="checkbox" ng-click="select(item)">{{item.desc}}</h4>
-            </div>
-            <div>
-                <input type="text" ng-model="itemDesc">
-                <button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">AddItem</button>
-            </div>
-            <div ng-controller="timerController">
-                <div ng-show="running"><span>{{hours}}:{{minutes}}:{{seconds}}:{{millsec}}</span></div>
-                <!--<div ng-show="running">{{clock.now}}</div>-->
-                <div>
-                    <button ng-click="timerToggle()" ng-model="running">{{status}}</button><br>
+            <section ng-controller="editController">
+                <div ng-include="'display.html'" ng-show="!edit">
                 </div>
+
+                <div ng-controller="itemController" ng-include="'edit.html'" ng-show="edit">
+                </div>
+
+                <div>
+                    <button ng-click="setEdit(true)" ng-show="!edit">Edit</button>
+                </div>
+
+            </section>
+
+            <!--<div ng-controller="timerController">-->
+                <!--<div><span>{{hours}}:{{minutes}}:{{seconds}}:{{millsec}}</span></div>-->
+                <!--&lt;!&ndash;<div ng-show="running">{{clock.now}}</div>&ndash;&gt;-->
                 <!--<div>-->
-                    <!--<input type="text" ng-model="test">-->
-                    <!--<span>{{test}}</span>-->
+                    <!--<button ng-click="timer()" ng-model="running">{{status}}</button><br>-->
                 <!--</div>-->
-            </div>
+            <!--</div>-->
+
+            <!--<div ng-controller="counterController">-->
+                <!--<div><span>{{hourLabel}}:{{minLabel}}:{{secLabel}}</span></div>-->
+                <!--<div>-->
+                    <!--<button ng-click="counter()" ng-model="running">{{status}}</button><br>-->
+                <!--</div>-->
+
+            <!--</div>-->
 
         </div>
     </body>
