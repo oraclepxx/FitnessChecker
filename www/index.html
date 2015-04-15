@@ -18,7 +18,7 @@
                 <button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">AddItem</button>
             </div>
             <div ng-controller="timerController">
-                <div ng-show="running"><span>{{hours}}:{{minutes}}:{{seconds}}</span></div>
+                <div ng-show="running"><span>{{hours}}:{{minutes}}:{{seconds}}:{{millsec}}</span></div>
                 <!--<div ng-show="running">{{clock.now}}</div>-->
                 <div>
                     <button ng-click="timerToggle()" ng-model="running">{{status}}</button><br>

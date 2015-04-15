@@ -44,6 +44,7 @@ fitness.controller("timerController", function ($scope) {
     $scope.hours = "";
     $scope.minutes = "";
     $scope.seconds = "";
+    $scope.millsec = "";
 
     $scope.timerToggle = function () {
         if ($scope.running) {
@@ -85,31 +86,32 @@ fitness.controller("timerController", function ($scope) {
 
     var updateTimer = function () {
         $scope.now = new Date();
-        var h = $scope.now.getHours();
-        var m = $scope.now.getMinutes();
-        var s = $scope.now.getSeconds();
-        if (h <= 9) {
-            $scope.hours = "0" + h;
+        var hh = $scope.now.getHours();
+        var mm = $scope.now.getMinutes();
+        var ss = $scope.now.getSeconds();
+        var ms = $scope.now.getMilliseconds();
+        if (hh <= 9) {
+            $scope.hours = "0" + hh;
         } else {
-            $scope.hours = h;
+            $scope.hours = hh;
         }
-        if (m <= 9) {
-            $scope.minutes = "0" + m;
+        if (mm <= 9) {
+            $scope.minutes = "0" + mm;
         } else {
-            $scope.minutes = m;
+            $scope.minutes = mm;
         }
-        if (s <= 9) {
-            $scope.seconds = "0" + s;
+        if (ss <= 9) {
+            $scope.seconds = "0" + ss;
         } else {
-            $scope.seconds = s;
+            $scope.seconds = ss;
         }
-
+        $scope.millsec = ms;
 
     };
 
     setInterval(function () {
         $scope.$apply(updateTimer)
-    }, 1000);
+    }, 100);
 
 
 });
