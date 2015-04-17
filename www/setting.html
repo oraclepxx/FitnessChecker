@@ -1,0 +1,15 @@
+<h3>Edit Items</h3>
+<div ng-controller="editController">
+    <div ng-repeat="item in allItems">
+        <div>
+            <h4>{{item.desc}} <button ng-click="removeItem(item)" ng-show="isEditing()">Delete</button></h4>
+        </div>
+    </div>
+
+    <div ng-show="isEditing()">
+        <input type="text" ng-model="itemDesc">
+        <button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">Add Item</button>
+    </div>
+
+</div>
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -7,20 +7,37 @@
         <script src="js/angular.min.js"></script>
         <script src="js/fitness.js"></script>
     </head>
-    <body ng-app="fitness" ng-controller="dataController">
+    <body ng-app="fitness" ng-controller="dataController" ng-init="initData()">
+        <br><br><br>
         <h1>Fitness Checklist</h1><br>
-
+        <!--<a href="setting.html" ng-click="setEditing(true)">Edit</a>-->
         <div>
-            <section ng-controller="editController">
-                <div ng-include="'display.html'" ng-show="!edit">
-                </div>
+            <!--<section ng-controller="displayController">-->
 
-                <div ng-controller="itemController" ng-include="'edit.html'" ng-show="edit">
-                </div>
+                <!--<div ng-include="'display.html'" ng-show="!editing">-->
+                <!--</div>-->
+
+                <!--<div ng-include="'setting.html'" ng-show="editing">-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button ng-click="setEditing(true)" ng-show="!editing">Edit</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--</section>-->
+
+            <section ng-controller="pageController">
+                <!--<div>-->
+                    <!--<a href="" ng-click="setPage('display')"></a>-->
+                <!--</div>-->
 
                 <div>
-                    <button ng-click="setEdit(true)" ng-show="!edit">Edit</button>
+                    <a href="" ng-click="setPage('setting')" ng-show="!isSetting()">Settings</a><a href="" ng-show="isSetting()" ng-click="edit()">Edit</a><a href="" ng-show="isSetting()" class="btn" ng-click="done()">Done</a><a href="" ng-click="setPage('display')" ng-show="isSetting()" class="btn" ng-click="done()">Back</a>
+
                 </div>
+
+                <div ng-include="'display.html'" ng-show="isCurrentPage('display')"></div>
+                <div ng-include="'setting.html'" ng-show="isCurrentPage('setting')"></div>
 
             </section>
 

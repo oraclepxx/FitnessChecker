@@ -4,17 +4,43 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>FitnessChecker</title>
+        <script src="js/angular.min.js"></script>
         <script src="js/fitness.js"></script>
     </head>
-    <body>
+    <body ng-app="fitness" ng-controller="dataController">
+        <br><br><br>
+        <h1>Fitness Checklist</h1><br>
+
         <div>
-            <h1>Fitness Checklist</h1><br>
-            <div ng-repeat>
-                <h2><input type="checkbox">    <span>The first activity - aaaaaaa</span></h2>
-                <h2><input type="checkbox">    <span>The second activity - bbbbbb</span></h2>
-            </div>
+            <section ng-controller="displayController" ng-init="initData()">
+                <div ng-include="'display.html'" ng-show="!editing">
+                </div>
+
+                <div ng-controller="editController" ng-include="'edit.html'" ng-show="editing">
+                </div>
+
+                <div>
+                    <button ng-click="setEditing(true)" ng-show="!editing">Edit</button>
+                </div>
+
+            </section>
+
+            <!--<div ng-controller="timerController">-->
+                <!--<div><span>{{hours}}:{{minutes}}:{{seconds}}:{{millsec}}</span></div>-->
+                <!--&lt;!&ndash;<div ng-show="running">{{clock.now}}</div>&ndash;&gt;-->
+                <!--<div>-->
+                    <!--<button ng-click="timer()" ng-model="running">{{status}}</button><br>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div ng-controller="counterController">-->
+                <!--<div><span>{{hourLabel}}:{{minLabel}}:{{secLabel}}</span></div>-->
+                <!--<div>-->
+                    <!--<button ng-click="counter()" ng-model="running">{{status}}</button><br>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
         </div>
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-        <!--<script type="text/javascript" src="js/index.js"></script>-->
     </body>
 </html>

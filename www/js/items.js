@@ -8,7 +8,7 @@ items.directive("editItems", function () {
 
     return {
         restrict: "E",
-        templateUrl: "/edit.html",
+        templateUrl: "/setting.html",
         controller: function () {
 
         }
