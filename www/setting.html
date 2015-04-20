@@ -1,15 +1,50 @@
-<h3>Edit Items</h3>
+<h1>Edit Items</h1>
 <div ng-controller="editController">
     <div ng-repeat="item in allItems">
-        <div>
-            <h4>{{item.desc}} <button ng-click="removeItem(item)" ng-show="isEditing()">Delete</button></h4>
+        <div class="event">
+            <h4>{{item.desc}} - {{" [ Groups: " + item.groups + " ]"}}  <button ng-click="removeItem(item)" ng-show="isEditing()">Delete</button></h4>
         </div>
     </div>
+    <br><br><br>
+    <form name="addItemForm" ng-submit="addItem(item)" ng-show="isEditing()">
+        <fieldset>
+            <textarea ng-model="item.desc"></textarea>
+        </fieldset>
+        <fieldset>
+            <select ng-model="item.groups" style="width: 50px">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select>
+            <input type="submit" ng-disabled="item == ''" value="Add Item">
+            <!--<button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">Add Item</button>-->
+        </fieldset>
+        <!--<fieldset>-->
+            <!--<button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">Add Item</button>-->
+        <!--</fieldset>-->
 
-    <div ng-show="isEditing()">
-        <input type="text" ng-model="itemDesc">
-        <button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''">Add Item</button>
-    </div>
+
+    </form>
+
+    <!--<div ng-show="isEditing()">-->
+        <!--<div><textarea ng-model="itemDesc" class="area"></textarea></div>-->
+        <!--&lt;!&ndash;<input type="text" ng-model="itemDesc">&ndash;&gt;-->
+        <!--<div>-->
+            <!--<select ng-model="itemGrp" class="area">-->
+                <!--<option>1</option>-->
+                <!--<option>2</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<button ng-click="addItem(itemDesc)" ng-disabled="itemDesc == ''" class="area">Add Item</button>-->
+        <!--</div>-->
+
+    <!--</div>-->
 
 </div>
 

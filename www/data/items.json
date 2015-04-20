@@ -1,22 +1,27 @@
 [
   {
     "id": 1,
-    "desc": "This is the first item"
+    "desc": "This is the first item",
+    "groups": 8
   },
   {
     "id": 2,
-    "desc": "This is the second item"
+    "desc": "This is the second item",
+    "groups": 6
   },
   {
     "id": 3,
-    "desc": "This is the third item"
+    "desc": "This is the third item",
+    "groups": 10
   },
   {
     "id": 4,
-    "desc": "This is the forth item"
+    "desc": "This is the forth item",
+    "groups": 4
   },
   {
     "id": 5,
-    "desc": "This is the fifth item"
+    "desc": "This is the fifth item",
+    "groups": 8
   }
 ]

@@ -79,12 +79,12 @@ h1 {
 }
 
 .event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
+    border-radius:2px;
+    -webkit-border-radius:2px;
+    color:#000000;
     font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
+    margin:0px 15px;
+    padding:1px 0px;
 }
 
 .event.listening {
@@ -114,8 +114,36 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
+.setting {
+    /*text-align: end;*/
+    /*margin:0px 30px;*/
+    /*padding:0px 0px;*/
+
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
 .btn {
-    /*text-align: center;*/
-    margin:0px 30px;
-    padding:2px 0px;
+    margin:0px 60px;
+    padding:0px 0px;
+    text-align: center;
+}
+
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+.area {
+    font-size:12px;
+    margin:0px 15px;
+    padding:1px 0px;
+}
+
+.fixed-size  {
+    width: 100px;
+    margin:0px 15px;
+    padding:1px 0px;
 }

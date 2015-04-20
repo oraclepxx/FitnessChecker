@@ -13,7 +13,11 @@ var fitness = angular.module("fitness", []);
 //];
 
 var fitnessItems = {};
+var groups = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var dataURL = "data/items.json";
+var PAGE = {
+    DISPLAY: "display", SETTING: "setting"
+}
 
 fitness.controller("dataController", ["$scope", "$http", function ($scope, $http) {
 
@@ -32,24 +36,26 @@ fitness.controller("dataController", ["$scope", "$http", function ($scope, $http
 
 }]);
 
-fitness.controller("displayController", function ($scope) {
-    $scope.editing = false;
-
-    $scope.setEditing = function (editValue) {
-        $scope.editing = editValue;
-    }
-
-});
+//fitness.controller("displayController", function ($scope) {
+//    $scope.editing = false;
+//
+//    $scope.setEditing = function (editValue) {
+//        $scope.editing = editValue;
+//    }
+//
+//});
 
 fitness.controller("editController", function ($scope, $http) {
 
-    $scope.itemDesc = "";
+    $scope.item = {};
 
-    $scope.addItem = function (itemDesc) {
+    $scope.addItem = function (newItem) {
+        $scope.item = newItem;
+        var grp = $scope.item.groups;
         var index = fitnessItems.length;
-        $scope.itemDesc = itemDesc;
-        var tempItem = {"id": index, "desc": itemDesc};
-        fitnessItems.push(tempItem);
+        $scope.item.id = index;
+        $scope.item.groups = Number(grp);
+        fitnessItems.push($scope.item);
         $scope.clearItem();
     };
 
@@ -59,12 +65,47 @@ fitness.controller("editController", function ($scope, $http) {
     };
 
     $scope.clearItem = function () {
-        $scope.itemDesc = "";
+        $scope.item = {};
+    };
+
+});
+
+fitness.controller("pageController", function ($scope, $http) {
+
+    $scope.page = PAGE.DISPLAY;
+    $scope.setting = false;
+    $scope.editing = false;
+
+    $scope.setPage = function (value) {
+        if (value == PAGE.DISPLAY) {
+            $scope.page = PAGE.DISPLAY;
+            $scope.setting = false;
+        } else {
+            $scope.page = PAGE.SETTING;
+            $scope.setting = true;
+        }
+
+    };
+
+    $scope.isCurrentPage = function (value) {
+        return $scope.page == value;
+    };
+
+    $scope.isSetting = function () {
+        return $scope.setting;
+    };
+
+    $scope.isEditing = function () {
+        return $scope.editing;
+    };
+
+    $scope.edit = function () {
+        $scope.editing = true;
     };
 
     $scope.done = function () {
-        $scope.setEditing(false);
 
+        $scope.editing = false;
 
         //$http.put(dataURL, fitnessItems).success(function (data) {
         //    alert(data);
@@ -78,5 +119,3 @@ fitness.controller("editController", function ($scope, $http) {
 
 
 });
-
-

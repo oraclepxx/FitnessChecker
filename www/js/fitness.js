@@ -13,6 +13,7 @@ var fitness = angular.module("fitness", []);
 //];
 
 var fitnessItems = {};
+var groups = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var dataURL = "data/items.json";
 var PAGE = {
     DISPLAY: "display", SETTING: "setting"
@@ -46,13 +47,15 @@ fitness.controller("dataController", ["$scope", "$http", function ($scope, $http
 
 fitness.controller("editController", function ($scope, $http) {
 
-    $scope.itemDesc = "";
+    $scope.item = {};
 
-    $scope.addItem = function (itemDesc) {
+    $scope.addItem = function (newItem) {
+        $scope.item = newItem;
+        var grp = $scope.item.groups;
         var index = fitnessItems.length;
-        $scope.itemDesc = itemDesc;
-        var tempItem = {"id": index, "desc": itemDesc};
-        fitnessItems.push(tempItem);
+        $scope.item.id = index;
+        $scope.item.groups = Number(grp);
+        fitnessItems.push($scope.item);
         $scope.clearItem();
     };
 
@@ -62,7 +65,7 @@ fitness.controller("editController", function ($scope, $http) {
     };
 
     $scope.clearItem = function () {
-        $scope.itemDesc = "";
+        $scope.item = {};
     };
 
 });
