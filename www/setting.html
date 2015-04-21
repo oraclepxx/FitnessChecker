@@ -8,7 +8,7 @@
     <br><br><br>
     <form name="addItemForm" ng-submit="addItem(item)" ng-show="isEditing()">
         <fieldset>
-            <textarea ng-model="item.desc"></textarea>
+            <textarea ng-model="item.desc" rows="10" cols="30"></textarea>
         </fieldset>
         <fieldset>
             <select ng-model="item.groups" style="width: 50px">
